@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabTrajectory — Routine Laboratory Trajectories Encode Complication Onset in Cancer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c10;
+  --bg-card: #12151c;
+  --bg-card-hover: #181c26;
+  --border: #1e2330;
+  --border-accent: #2a3040;
+  --text: #c9cdd6;
+  --text-dim: #6b7280;
+  --text-bright: #e8ecf4;
+  --heading: #f0f2f8;
+  --accent: #58a6ff;
+  --accent-dim: #1a3a5c;
+  --green: #3fb950;
+  --green-dim: #1a3520;
+  --orange: #d29922;
+  --orange-dim: #3d2e0a;
+  --red: #f85149;
+  --purple: #bc8cff;
+  --cyan: #76e3ea;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(88, 166, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-accent);
+  background: var(--bg-card);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+  letter-spacing: 0.03em;
+  animation: fadeIn 0.6s ease;
+}
+
+.hero-badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--heading);
+  max-width: 780px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.7s ease;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--text);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.9s ease;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0c10;
+}
+.btn-primary:hover {
+  background: #79bcff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.25);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-bright);
+  border: 1px solid var(--border-accent);
+}
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: #3a4560;
+}
+
+.btn-disabled {
+  background: var(--bg-card);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Authors */
+.authors-section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.authors-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.authors-list {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.authors-list .highlight {
+  color: var(--text-bright);
+  font-weight: 500;
+}
+
+.affiliation {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 48px 0;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  padding: 28px 24px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.stat-card:hover { background: var(--bg-card-hover); }
+
+.stat-value {
+  font-family: var(--mono);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+/* Abstract */
+.abstract-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.abstract-text {
+  font-family: var(--serif);
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--text);
+  max-width: 740px;
+}
+
+/* Key findings */
+.findings-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.finding-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  transition: all 0.25s ease;
+}
+.finding-card:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.finding-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.finding-card:nth-child(1) .finding-icon { background: var(--accent-dim); color: var(--accent); }
+.finding-card:nth-child(2) .finding-icon { background: var(--green-dim); color: var(--green); }
+.finding-card:nth-child(3) .finding-icon { background: var(--orange-dim); color: var(--orange); }
+.finding-card:nth-child(4) .finding-icon { background: rgba(188,140,255,0.12); color: var(--purple); }
+
+.finding-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+
+.finding-desc {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* Performance table */
+.perf-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 13.5px;
+}
+
+.perf-table th {
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.perf-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.perf-table tr:hover td { background: var(--bg-card); }
+
+.perf-table .endpoint { font-weight: 500; color: var(--text-bright); }
+.perf-table .mono { font-family: var(--mono); font-size: 13px; }
+
+.enrichment-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.enrich-high { background: var(--green-dim); color: var(--green); }
+.enrich-med { background: var(--accent-dim); color: var(--accent); }
+.enrich-low { background: rgba(255,255,255,0.04); color: var(--text-dim); }
+
+/* Architecture */
+.arch-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.arch-pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 28px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.arch-step {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+}
+
+.arch-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 18px;
+}
+
+.arch-step-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.arch-step-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 4px;
+}
+
+.arch-step-desc {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* Code block */
+.code-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.code-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.code-dots {
+  display: flex; gap: 6px;
+}
+.code-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border-accent);
+}
+
+.code-body {
+  padding: 20px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  overflow-x: auto;
+}
+
+.code-body .comment { color: var(--text-dim); }
+.code-body .keyword { color: var(--purple); }
+.code-body .string { color: var(--green); }
+.code-body .func { color: var(--accent); }
+.code-body .num { color: var(--orange); }
+
+/* Citation */
+.cite-section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cite-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--text);
+  position: relative;
+  margin-top: 16px;
+}
+
+.cite-copy {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--border-accent);
+  border: none;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cite-copy:hover { background: #3a4560; color: var(--text-bright); }
+
+/* Footer */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer a:hover { text-decoration: underline; }
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 16px;
+  opacity: 0.5;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .findings-grid { grid-template-columns: 1fr; }
+  .arch-pipeline { flex-direction: column; }
+  .arch-arrow { transform: rotate(90deg); width: auto; padding: 4px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Paper under review · Code release upon publication
+    </div>
+    <h1>Routine laboratory trajectories <em>encode</em> the onset of organ-level complications in cancer</h1>
+    <p class="hero-sub">
+      A transformer trained on longitudinal laboratory data from 3,868 patients predicts 111 treatment-associated complications up to two years before clinical onset — using only routine blood work already collected in standard oncological care.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-disabled" title="Available upon publication">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9z"/></svg>
+        Paper (coming soon)
+      </a>
+      <a class="btn btn-disabled" title="Available upon publication">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        Code (coming soon)
+      </a>
+      <a class="btn btn-disabled" title="Available upon publication">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.75 0a.75.75 0 01.75.75V2h7V.75a.75.75 0 011.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V3.75C0 2.784.784 2 1.75 2H3V.75A.75.75 0 013.75 0zM1.5 6v8.25c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V6h-13z"/></svg>
+        Model weights (coming soon)
+      </a>
+    </div>
+  </section>
+
+  <!-- Authors -->
+  <section class="authors-section">
+    <div class="authors-label">Authors</div>
+    <div class="authors-list">
+      <span class="highlight">Jannik Lübberstedt</span>, Krischan Braitsch, Jacqueline Lammert, Christof Winter, Florian Gabriel, Tristan Lemke, Christopher Zirn, Markus Graf, Anirudh Narayanan, Fabian Drexel, Zeineb Ben Chaaben, Johannes Moll, Sebastian Ziegelmayer, Su Hwan Kim, Marcus Makowski, Christian Wachinger, <span class="highlight">Lisa Adams*</span>, <span class="highlight">Keno Bressem*</span>
+    </div>
+    <div class="affiliation">TUM University Hospital, Klinikum rechts der Isar · German Heart Center Munich · Charité Berlin</div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value">3,868</div>
+      <div class="stat-label">Patients</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">2.8M</div>
+      <div class="stat-label">Lab measurements</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">111</div>
+      <div class="stat-label">Predicted diagnoses</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">39</div>
+      <div class="stat-label">Routine analytes</div>
+    </div>
+  </div>
+
+  <!-- Abstract -->
+  <section class="abstract-section">
+    <div class="section-label">Abstract</div>
+    <p class="abstract-text">
+      Routine laboratory panels drawn during cancer treatment generate dense temporal records of organ function, yet this signal is discarded by prognostic tools that operate on single-timepoint snapshots. A transformer trained on laboratory trajectories from 3,868 patients with multiple myeloma or advanced ovarian cancer predicted the two-year onset of 111 treatment-associated complications, with 1.1- to 3.0-fold enrichment over prevalence across grouped endpoints. The temporal advantage over non-sequential baselines scaled with biological tempo, from two- to fivefold for gradually evolving endpoints such as myelodysplastic syndromes and type&nbsp;2 diabetes to near parity for acute conditions. Predictions generalised across both cancers for shared toxicity endpoints but diverged for disease-specific complications, and biomarker masking recovered diagnosis-specific signatures consistent with established pathophysiology.
+    </p>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="findings-section">
+    <div class="section-label">Key Findings</div>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="finding-icon">↗</div>
+        <div class="finding-title">Temporal signal scales with biological tempo</div>
+        <div class="finding-desc">The transformer's advantage over cross-sectional baselines is largest for slowly evolving complications (2–5× for MDS, T2D, osteolyses) and smallest for acute conditions, demonstrating that trajectory information carries complication-specific signal inaccessible to single-timepoint analysis.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-icon">⟷</div>
+        <div class="finding-title">Biological coherence across cancers</div>
+        <div class="finding-desc">Shared toxicity endpoints (cardiovascular, renal, infections, mortality) generalise across myeloma and ovarian cancer with near-identical performance. Disease-specific endpoints diverge along mechanistically expected lines.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-icon">◎</div>
+        <div class="finding-title">Interpretable biomarker signatures</div>
+        <div class="finding-desc">Feature masking recovers diagnosis-specific patterns aligned with pathophysiology: eGFR for kidney disease, MCH/MCV for MDS, uric acid for diabetes, INR for infections — without prior biological constraints.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-icon">⬡</div>
+        <div class="finding-title">No additional testing required</div>
+        <div class="finding-desc">All predictions derive from 39 routine laboratory analytes already collected at every clinical encounter. The data infrastructure for anticipatory toxicity management is already in place in standard oncological care.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance -->
+  <section class="perf-section">
+    <div class="section-label">Performance · Grouped Endpoints</div>
+    <table class="perf-table">
+      <thead>
+        <tr>
+          <th>Endpoint</th>
+          <th>AP</th>
+          <th>Prevalence</th>
+          <th>Enrichment</th>
+          <th>vs. XGBoost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="endpoint">Myelodysplastic syndromes</td>
+          <td class="mono">0.105</td>
+          <td class="mono">0.036</td>
+          <td><span class="enrichment-badge enrich-high">3.0×</span></td>
+          <td class="mono">2.8×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Osteolyses</td>
+          <td class="mono">0.334</td>
+          <td class="mono">0.142</td>
+          <td><span class="enrichment-badge enrich-high">2.4×</span></td>
+          <td class="mono">2.1×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Type 2 diabetes</td>
+          <td class="mono">0.158</td>
+          <td class="mono">0.081</td>
+          <td><span class="enrichment-badge enrich-high">2.0×</span></td>
+          <td class="mono">3.7×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Kidney disease</td>
+          <td class="mono">0.328</td>
+          <td class="mono">0.178</td>
+          <td><span class="enrichment-badge enrich-med">1.8×</span></td>
+          <td class="mono">1.7×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Bacterial infections</td>
+          <td class="mono">0.316</td>
+          <td class="mono">0.226</td>
+          <td><span class="enrichment-badge enrich-med">1.4×</span></td>
+          <td class="mono">1.3×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Death</td>
+          <td class="mono">0.292</td>
+          <td class="mono">0.189</td>
+          <td><span class="enrichment-badge enrich-med">1.5×</span></td>
+          <td class="mono">1.2×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Cardiovascular diseases</td>
+          <td class="mono">0.404</td>
+          <td class="mono">0.371</td>
+          <td><span class="enrichment-badge enrich-low">1.1×</span></td>
+          <td class="mono">1.5×</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Secondary cancers</td>
+          <td class="mono">0.311</td>
+          <td class="mono">0.245</td>
+          <td><span class="enrichment-badge enrich-med">1.3×</span></td>
+          <td class="mono">1.4×</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Architecture -->
+  <section class="arch-section">
+    <div class="section-label">Pipeline Overview</div>
+    <div class="arch-pipeline">
+      <div class="arch-step">
+        <div class="arch-step-num">01</div>
+        <div class="arch-step-title">Lab Trajectories</div>
+        <div class="arch-step-desc">39 routine analytes segmented into 10–30 day intervals</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <div class="arch-step-num">02</div>
+        <div class="arch-step-title">Imputation</div>
+        <div class="arch-step-desc">Transformer-based masked prediction fills missing values</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <div class="arch-step-num">03</div>
+        <div class="arch-step-title">Encoder</div>
+        <div class="arch-step-desc">Bidirectional transformer processes temporal sequences</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-step">
+        <div class="arch-step-num">04</div>
+        <div class="arch-step-title">Prediction</div>
+        <div class="arch-step-desc">Multi-label head predicts 111 diagnoses within 2 years</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code -->
+  <section class="code-section">
+    <div class="section-label">Quick Start (available upon publication)</div>
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><span></span><span></span><span></span></div>
+        inference.py
+      </div>
+      <div class="code-body">
+<span class="keyword">from</span> labtrajectory <span class="keyword">import</span> <span class="func">HealthForecaster</span>, <span class="func">LabSequence</span>
+
+<span class="comment"># Load pretrained model</span>
+model = <span class="func">HealthForecaster</span>.from_pretrained(<span class="string">"labtrajectory/v1"</span>)
+
+<span class="comment"># Create a laboratory sequence from routine blood work</span>
+seq = <span class="func">LabSequence</span>.from_dataframe(
+    labs_df,
+    analytes=model.analyte_list,   <span class="comment"># 39 routine analytes</span>
+    interval_days=(<span class="num">10</span>, <span class="num">30</span>),
+    normalize=<span class="keyword">True</span>
+)
+
+<span class="comment"># Predict 2-year complication risks</span>
+predictions = model.predict(seq)
+
+<span class="keyword">for</span> dx, prob <span class="keyword">in</span> predictions.top_k(<span class="num">5</span>):
+    <span class="func">print</span>(<span class="string">f"<span style="color:var(--text)">{dx.name:&lt;35}</span> <span style="color:var(--text)">{prob:.3f}</span>"</span>)
+<span class="comment"># Cardiovascular diseases              0.412</span>
+<span class="comment"># Kidney disease                       0.287</span>
+<span class="comment"># Bacterial infections                 0.234</span>
+<span class="comment"># Osteolyses                           0.189</span>
+<span class="comment"># Type 2 diabetes                      0.143</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section class="cite-section">
+    <div class="section-label">Citation</div>
+    <div class="cite-block">
+      <button class="cite-copy" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('.cite-text').innerText).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})">Copy</button>
+      <div class="cite-text">@article{lubberstedt2025labtrajectory,
+  title   = {Routine laboratory trajectories encode the onset
+             of organ-level complications in cancer},
+  author  = {L{\"u}bberstedt, Jannik and Braitsch, Krischan
+             and Lammert, Jacqueline and Winter, Christof
+             and Gabriel, Florian and Lemke, Tristan
+             and Zirn, Christopher and Graf, Markus
+             and Narayanan, Anirudh and Drexel, Fabian
+             and Ben Chaaben, Zeineb and Moll, Johannes
+             and Ziegelmayer, Sebastian and Kim, Su Hwan
+             and Makowski, Marcus and Wachinger, Christian
+             and Adams, Lisa and Bressem, Keno},
+  journal = {Under review},
+  year    = {2025}
+}</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logos">
+      <span>TUM University Hospital</span>
+      <span>·</span>
+      <span>German Heart Center Munich</span>
+    </div>
+    <p>Supported by the Bavarian State Ministry of Health, Care and Prevention · GO-TWIN (DGP-2024-01)</p>
+    <p style="margin-top:8px"><a href="#">License</a> · <a href="#">Contact</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
