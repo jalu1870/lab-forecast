@@ -749,48 +749,14 @@ body {
     </div>
   </section>
 
-  <!-- Code -->
-  <section class="code-section">
-    <div class="section-label">Quick Start (available upon publication)</div>
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><span></span><span></span><span></span></div>
-        inference.py
-      </div>
-      <div class="code-body">
-<span class="keyword">from</span> labtrajectory <span class="keyword">import</span> <span class="func">HealthForecaster</span>, <span class="func">LabSequence</span>
 
-<span class="comment"># Load pretrained model</span>
-model = <span class="func">HealthForecaster</span>.from_pretrained(<span class="string">"labtrajectory/v1"</span>)
-
-<span class="comment"># Create a laboratory sequence from routine blood work</span>
-seq = <span class="func">LabSequence</span>.from_dataframe(
-    labs_df,
-    analytes=model.analyte_list,   <span class="comment"># 39 routine analytes</span>
-    interval_days=(<span class="num">10</span>, <span class="num">30</span>),
-    normalize=<span class="keyword">True</span>
-)
-
-<span class="comment"># Predict 2-year complication risks</span>
-predictions = model.predict(seq)
-
-<span class="keyword">for</span> dx, prob <span class="keyword">in</span> predictions.top_k(<span class="num">5</span>):
-    <span class="func">print</span>(<span class="string">f"<span style="color:var(--text)">{dx.name:&lt;35}</span> <span style="color:var(--text)">{prob:.3f}</span>"</span>)
-<span class="comment"># Cardiovascular diseases              0.412</span>
-<span class="comment"># Kidney disease                       0.287</span>
-<span class="comment"># Bacterial infections                 0.234</span>
-<span class="comment"># Osteolyses                           0.189</span>
-<span class="comment"># Type 2 diabetes                      0.143</span>
-      </div>
-    </div>
-  </section>
 
   <!-- Citation -->
   <section class="cite-section">
     <div class="section-label">Citation</div>
     <div class="cite-block">
       <button class="cite-copy" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('.cite-text').innerText).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})">Copy</button>
-      <div class="cite-text">@article{lubberstedt2025labtrajectory,
+      <div class="cite-text">@article{lubberstedt2026labtrajectory,
   title   = {Routine laboratory trajectories encode the onset
              of organ-level complications in cancer},
   author  = {L{\"u}bberstedt, Jannik and Braitsch, Krischan
@@ -803,7 +769,7 @@ predictions = model.predict(seq)
              and Makowski, Marcus and Wachinger, Christian
              and Adams, Lisa and Bressem, Keno},
   journal = {Manuscript submitted},
-  year    = {2025}
+  year    = {2026}
 }</div>
     </div>
   </section>
