@@ -317,19 +317,7 @@ body {
 .finding-card:nth-child(2) .finding-icon { background: var(--green-dim); color: var(--green); }
 .finding-card:nth-child(3) .finding-icon { background: var(--orange-dim); color: var(--orange); }
 .finding-card:nth-child(4) .finding-icon { background: rgba(188,140,255,0.12); color: var(--purple); }
-
-.finding-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--heading);
-  margin-bottom: 8px;
-}
-
-.finding-desc {
-  font-size: 13.5px;
-  color: var(--text-dim);
-  line-height: 1.65;
-}
+.finding-card:nth-child(5) .finding-icon { background: rgba(118,227,234,0.12); color: var(--cyan); }
 
 /* Performance table */
 .perf-section {
@@ -433,54 +421,60 @@ body {
   line-height: 1.5;
 }
 
-/* Code block */
-.code-section {
+/* External validation */
+.validation-section {
   padding: 48px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.code-block {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
+.validation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-top: 20px;
 }
 
-.code-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.02);
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-dim);
-}
-
-.code-dots {
-  display: flex; gap: 6px;
-}
-.code-dots span {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--border-accent);
-}
-
-.code-body {
+.val-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 20px;
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--text);
-  overflow-x: auto;
+  text-align: center;
+  transition: all 0.2s;
+}
+.val-card:hover { border-color: var(--border-accent); }
+
+.val-endpoint {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.code-body .comment { color: var(--text-dim); }
-.code-body .keyword { color: var(--purple); }
-.code-body .string { color: var(--green); }
-.code-body .func { color: var(--accent); }
-.code-body .num { color: var(--orange); }
+.val-auroc {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--heading);
+  margin-bottom: 4px;
+}
+
+.val-delta {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.val-delta.positive { color: var(--green); }
+.val-delta.negative { color: var(--orange); }
+.val-delta.neutral { color: var(--text-dim); }
+
+.val-enrich {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
 
 /* Citation */
 .cite-section {
@@ -549,6 +543,7 @@ body {
   .hero h1 { font-size: 28px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .findings-grid { grid-template-columns: 1fr; }
+  .validation-grid { grid-template-columns: repeat(2, 1fr); }
   .arch-pipeline { flex-direction: column; }
   .arch-arrow { transform: rotate(90deg); width: auto; padding: 4px 0; }
 }
@@ -584,7 +579,7 @@ body {
   <section class="authors-section">
     <div class="authors-label">Authors</div>
     <div class="authors-list">
-      <span class="highlight">Jannik Lübberstedt</span>, Krischan Braitsch, Jacqueline Lammert, Christof Winter, Florian Gabriel, Tristan Lemke, Christopher Zirn, Markus Graf, Anirudh Narayanan, Fabian Drexel, Zeineb Ben Chaaben, Johannes Moll, Sebastian Ziegelmayer, Su Hwan Kim, Marcus Makowski, Christian Wachinger, <span class="highlight">Lisa Adams*</span>, <span class="highlight">Keno Bressem*</span>
+      <span class="highlight">Jannik Lübberstedt</span>, Krischan Braitsch, Jacqueline Lammert, Christof Winter, Florian Gabriel, Tristan Lemke, Christopher Zirn, Markus Graf, Friedrich Puttkammer, Hartmut Häntze, Johannes Moll, Anirudh Narayanan, Andrei Zhukov, Fabian Drexel, Zeineb Ben Chaaben, Sebastian Ziegelmayer, Su Hwan Kim, Florian Bassermann, Jan Kirschke, Marcus Makowski, Christian Wachinger, <span class="highlight">Lisa Adams*</span> &amp; <span class="highlight">Keno Bressem*</span>
     </div>
     <div class="affiliation">TUM University Hospital, Klinikum rechts der Isar · German Heart Center Munich · Charité Berlin</div>
   </section>
@@ -613,7 +608,7 @@ body {
   <section class="abstract-section">
     <div class="section-label">Abstract</div>
     <p class="abstract-text">
-      Routine laboratory panels drawn during cancer treatment generate dense temporal records of organ function, yet this signal is discarded by prognostic tools that operate on single-timepoint snapshots. A transformer trained on laboratory trajectories from 3,868 patients with multiple myeloma or advanced ovarian cancer predicted the two-year onset of 111 treatment-associated complications, with 1.1- to 3.0-fold enrichment over prevalence across grouped endpoints. The temporal advantage over non-sequential baselines scaled with biological tempo, from two- to fivefold for gradually evolving endpoints such as myelodysplastic syndromes and type&nbsp;2 diabetes to near parity for acute conditions. Predictions generalised across both cancers for shared toxicity endpoints but diverged for disease-specific complications, and biomarker masking recovered diagnosis-specific signatures consistent with established pathophysiology.
+      Routine laboratory panels drawn during cancer treatment generate dense temporal records of organ function, yet this signal is discarded by prognostic tools that operate on single-timepoint snapshots. A transformer trained on 2,777,595 laboratory measurements from 3,868 patients with multiple myeloma or ovarian cancer predicted two-year onset of 111 diagnoses spanning eight clinical categories, achieving 1.1- to 3.1-fold enrichment above prevalence at the group level. The temporal advantage over non-sequential baselines scaled with biological tempo, with AUROC gains of up to 0.08 for gradually evolving endpoints, narrowing for conditions with laboratory antecedents captured by single timepoints. Predictions generalised across both cancers for shared toxicity endpoints but diverged for disease-specific complications, and biomarker masking recovered diagnosis-specific signatures consistent with established pathophysiology. Cross-system external validation on an independent United States cohort confirmed transferability of mortality, metastatic disease, and myelodysplastic syndrome predictions, with remaining endpoints limited by structural coding incompatibilities between healthcare systems.
     </p>
   </section>
 
@@ -624,20 +619,25 @@ body {
       <div class="finding-card">
         <div class="finding-icon">↗</div>
         <div class="finding-title">Temporal signal scales with biological tempo</div>
-        <div class="finding-desc">The transformer's advantage over cross-sectional baselines is largest for slowly evolving complications (2–5× for MDS, T2D, osteolyses) and smallest for acute conditions, demonstrating that trajectory information carries complication-specific signal inaccessible to single-timepoint analysis.</div>
+        <div class="finding-desc">The transformer's advantage over cross-sectional baselines is largest for slowly evolving complications (ΔAUROC +0.08 for MDS, +0.07 for infections, +0.06 for kidney disease) and smallest for acute conditions, demonstrating that trajectory information carries complication-specific signal inaccessible to single-timepoint analysis.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">⟷</div>
         <div class="finding-title">Biological coherence across cancers</div>
-        <div class="finding-desc">Shared toxicity endpoints (cardiovascular, renal, infections, mortality) generalise across myeloma and ovarian cancer with near-identical performance. Disease-specific endpoints diverge along mechanistically expected lines.</div>
+        <div class="finding-desc">Six of eight grouped endpoints generalised across myeloma and ovarian cancer with AUROC differences ≤0.04. Disease-specific endpoints diverged along mechanistically expected lines: osteolyses confined to myeloma, MDS driven by platinum exposure in ovarian cancer.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">◎</div>
         <div class="finding-title">Interpretable biomarker signatures</div>
-        <div class="finding-desc">Feature masking recovers diagnosis-specific patterns aligned with pathophysiology: eGFR for kidney disease, MCH/MCV for MDS, uric acid for diabetes, INR for infections — without prior biological constraints.</div>
+        <div class="finding-desc">Feature masking recovers diagnosis-specific patterns aligned with pathophysiology: eGFR for kidney disease, MCH/MCV for MDS, calcium and INR for diabetes, age and INR for infections — without prior biological constraints.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">⬡</div>
+        <div class="finding-title">Cross-system external validation</div>
+        <div class="finding-desc">Applied without retraining to 1,626 MIMIC-IV patients. Mortality, metastatic disease, and MDS predictions transferred across healthcare systems. All eight primary endpoints maintained enrichment at or above prevalence despite coding system differences.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-icon">⊕</div>
         <div class="finding-title">No additional testing required</div>
         <div class="finding-desc">All predictions derive from 39 routine laboratory analytes already collected at every clinical encounter. The data infrastructure for anticipatory toxicity management is already in place in standard oncological care.</div>
       </div>
@@ -646,76 +646,102 @@ body {
 
   <!-- Performance -->
   <section class="perf-section">
-    <div class="section-label">Performance · Grouped Endpoints</div>
+    <div class="section-label">Performance · Grouped Endpoints (Internal)</div>
     <table class="perf-table">
       <thead>
         <tr>
           <th>Endpoint</th>
+          <th>AUROC</th>
           <th>AP</th>
-          <th>Prevalence</th>
           <th>Enrichment</th>
-          <th>vs. XGBoost</th>
+          <th>Δ vs. XGBoost</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="endpoint">Myelodysplastic syndromes</td>
-          <td class="mono">0.105</td>
-          <td class="mono">0.036</td>
-          <td><span class="enrichment-badge enrich-high">3.0×</span></td>
-          <td class="mono">2.8×</td>
+          <td class="mono">0.73</td>
+          <td class="mono">0.107</td>
+          <td><span class="enrichment-badge enrich-high">3.1×</span></td>
+          <td class="mono">+0.08</td>
         </tr>
         <tr>
           <td class="endpoint">Osteolyses</td>
-          <td class="mono">0.334</td>
-          <td class="mono">0.142</td>
-          <td><span class="enrichment-badge enrich-high">2.4×</span></td>
-          <td class="mono">2.1×</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Type 2 diabetes</td>
-          <td class="mono">0.158</td>
-          <td class="mono">0.081</td>
-          <td><span class="enrichment-badge enrich-high">2.0×</span></td>
-          <td class="mono">3.7×</td>
+          <td class="mono">0.78</td>
+          <td class="mono">0.212</td>
+          <td><span class="enrichment-badge enrich-high">2.5×</span></td>
+          <td class="mono">+0.04</td>
         </tr>
         <tr>
           <td class="endpoint">Kidney disease</td>
-          <td class="mono">0.328</td>
-          <td class="mono">0.178</td>
-          <td><span class="enrichment-badge enrich-med">1.8×</span></td>
-          <td class="mono">1.7×</td>
+          <td class="mono">0.68</td>
+          <td class="mono">0.301</td>
+          <td><span class="enrichment-badge enrich-med">1.9×</span></td>
+          <td class="mono">+0.06</td>
         </tr>
         <tr>
-          <td class="endpoint">Bacterial infections</td>
-          <td class="mono">0.316</td>
-          <td class="mono">0.226</td>
-          <td><span class="enrichment-badge enrich-med">1.4×</span></td>
-          <td class="mono">1.3×</td>
+          <td class="endpoint">Type 2 diabetes</td>
+          <td class="mono">0.62</td>
+          <td class="mono">0.077</td>
+          <td><span class="enrichment-badge enrich-med">1.5×</span></td>
+          <td class="mono">+0.06</td>
         </tr>
         <tr>
           <td class="endpoint">Death</td>
-          <td class="mono">0.292</td>
-          <td class="mono">0.189</td>
+          <td class="mono">0.66</td>
+          <td class="mono">0.286</td>
           <td><span class="enrichment-badge enrich-med">1.5×</span></td>
-          <td class="mono">1.2×</td>
+          <td class="mono">+0.02</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Bacterial infections</td>
+          <td class="mono">0.60</td>
+          <td class="mono">0.305</td>
+          <td><span class="enrichment-badge enrich-med">1.4×</span></td>
+          <td class="mono">+0.07</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Metastatic disease</td>
+          <td class="mono">0.60</td>
+          <td class="mono">0.264</td>
+          <td><span class="enrichment-badge enrich-med">1.3×</span></td>
+          <td class="mono">0.00</td>
         </tr>
         <tr>
           <td class="endpoint">Cardiovascular diseases</td>
-          <td class="mono">0.404</td>
-          <td class="mono">0.371</td>
+          <td class="mono">0.56</td>
+          <td class="mono">0.329</td>
           <td><span class="enrichment-badge enrich-low">1.1×</span></td>
-          <td class="mono">1.5×</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Secondary cancers</td>
-          <td class="mono">0.311</td>
-          <td class="mono">0.245</td>
-          <td><span class="enrichment-badge enrich-med">1.3×</span></td>
-          <td class="mono">1.4×</td>
+          <td class="mono">+0.01</td>
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- External Validation -->
+  <section class="validation-section">
+    <div class="section-label">External Validation · MIMIC-IV (1,626 patients)</div>
+    <div class="validation-grid">
+      <div class="val-card">
+        <div class="val-endpoint">Metastatic</div>
+        <div class="val-auroc">0.67</div>
+        <div class="val-delta positive">Δ +0.07</div>
+        <div class="val-enrich">1.6× enrichment</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">Death</div>
+        <div class="val-auroc">0.62</div>
+        <div class="val-delta negative">Δ −0.04</div>
+        <div class="val-enrich">1.3× enrichment</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">MDS</div>
+        <div class="val-auroc">0.61</div>
+        <div class="val-delta negative">Δ −0.12</div>
+        <div class="val-enrich">1.9× enrichment</div>
+      </div>
+
+    </div>
   </section>
 
   <!-- Architecture -->
@@ -737,18 +763,16 @@ body {
       <div class="arch-step">
         <div class="arch-step-num">03</div>
         <div class="arch-step-title">Encoder</div>
-        <div class="arch-step-desc">Bidirectional transformer processes temporal sequences</div>
+        <div class="arch-step-desc">Bidirectional transformer (Qwen-3 architecture) processes sequences</div>
       </div>
       <div class="arch-arrow">→</div>
       <div class="arch-step">
         <div class="arch-step-num">04</div>
         <div class="arch-step-title">Prediction</div>
-        <div class="arch-step-desc">Multi-label head predicts 111 diagnoses within 2 years</div>
+        <div class="arch-step-desc">Multi-label sigmoid head predicts 111 diagnoses within 2 years</div>
       </div>
     </div>
   </section>
-
-
 
   <!-- Citation -->
   <section class="cite-section">
@@ -762,9 +786,12 @@ body {
              and Lammert, Jacqueline and Winter, Christof
              and Gabriel, Florian and Lemke, Tristan
              and Zirn, Christopher and Graf, Markus
-             and Narayanan, Anirudh and Drexel, Fabian
-             and Ben Chaaben, Zeineb and Moll, Johannes
+             and Puttkammer, Friedrich and H{\"a}ntze, Hartmut
+             and Moll, Johannes and Narayanan, Anirudh
+             and Zhukov, Andrei and Drexel, Fabian
+             and Ben Chaaben, Zeineb
              and Ziegelmayer, Sebastian and Kim, Su Hwan
+             and Bassermann, Florian and Kirschke, Jan
              and Makowski, Marcus and Wachinger, Christian
              and Adams, Lisa and Bressem, Keno},
   journal = {Manuscript submitted},
@@ -779,9 +806,11 @@ body {
       <span>TUM University Hospital</span>
       <span>·</span>
       <span>German Heart Center Munich</span>
+      <span>·</span>
+      <span>Charité Berlin</span>
     </div>
     <p>Supported by the Bavarian State Ministry of Health, Care and Prevention · GO-TWIN (DGP-2024-01)</p>
-    <p style="margin-top:8px"><a href="#">License</a> · <a href="#">Contact</a></p>
+    <p style="margin-top:8px"><a href="mailto:jannik.luebberstedt@tum.de">Contact</a></p>
   </footer>
 
 </div>
