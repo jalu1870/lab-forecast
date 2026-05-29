@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LabTrajectory — Routine Laboratory Trajectories Encode Complication Onset in Cancer</title>
+<title>LabTrajectory: Routine Laboratory Trajectories Encode Complication Onset in Cancer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0c10;
-  --bg-card: #12151c;
-  --bg-card-hover: #181c26;
-  --border: #1e2330;
-  --border-accent: #2a3040;
-  --text: #c9cdd6;
-  --text-dim: #6b7280;
-  --text-bright: #e8ecf4;
-  --heading: #f0f2f8;
-  --accent: #58a6ff;
-  --accent-dim: #1a3a5c;
-  --green: #3fb950;
-  --green-dim: #1a3520;
-  --orange: #d29922;
-  --orange-dim: #3d2e0a;
-  --red: #f85149;
-  --purple: #bc8cff;
-  --cyan: #76e3ea;
+  --bg: #fafbfc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f6f8fa;
+  --border: #d1d9e0;
+  --border-accent: #afb8c1;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --text-bright: #0d1117;
+  --heading: #0d1117;
+  --accent: #0969da;
+  --accent-dim: #ddf4ff;
+  --green: #1a7f37;
+  --green-dim: #dafbe1;
+  --orange: #9a6700;
+  --orange-dim: #fff8c5;
+  --red: #cf222e;
+  --purple: #8250df;
+  --cyan: #1b7c83;
   --serif: 'Source Serif 4', Georgia, serif;
   --sans: 'DM Sans', -apple-system, sans-serif;
   --mono: 'JetBrains Mono', 'Consolas', monospace;
@@ -69,7 +69,7 @@ body {
   transform: translateX(-50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(88, 166, 255, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(9, 105, 218, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -161,12 +161,12 @@ body {
 
 .btn-primary {
   background: var(--accent);
-  color: #0a0c10;
+  color: #ffffff;
 }
 .btn-primary:hover {
-  background: #79bcff;
+  background: #0860c8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(9, 105, 218, 0.2);
 }
 
 .btn-secondary {
@@ -176,7 +176,7 @@ body {
 }
 .btn-secondary:hover {
   background: var(--bg-card-hover);
-  border-color: #3a4560;
+  border-color: #8c959f;
 }
 
 .btn-disabled {
@@ -316,8 +316,21 @@ body {
 .finding-card:nth-child(1) .finding-icon { background: var(--accent-dim); color: var(--accent); }
 .finding-card:nth-child(2) .finding-icon { background: var(--green-dim); color: var(--green); }
 .finding-card:nth-child(3) .finding-icon { background: var(--orange-dim); color: var(--orange); }
-.finding-card:nth-child(4) .finding-icon { background: rgba(188,140,255,0.12); color: var(--purple); }
-.finding-card:nth-child(5) .finding-icon { background: rgba(118,227,234,0.12); color: var(--cyan); }
+.finding-card:nth-child(4) .finding-icon { background: rgba(130,80,223,0.10); color: var(--purple); }
+.finding-card:nth-child(5) .finding-icon { background: rgba(27,124,131,0.10); color: var(--cyan); }
+
+.finding-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+
+.finding-desc {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+}
 
 /* Performance table */
 .perf-section {
@@ -365,7 +378,7 @@ body {
 
 .enrich-high { background: var(--green-dim); color: var(--green); }
 .enrich-med { background: var(--accent-dim); color: var(--accent); }
-.enrich-low { background: rgba(255,255,255,0.04); color: var(--text-dim); }
+.enrich-low { background: rgba(0,0,0,0.04); color: var(--text-dim); }
 
 /* Architecture */
 .arch-section {
@@ -509,7 +522,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 }
-.cite-copy:hover { background: #3a4560; color: var(--text-bright); }
+.cite-copy:hover { background: #afb8c1; color: var(--text-bright); }
 
 /* Footer */
 .footer {
@@ -561,7 +574,7 @@ body {
     </div>
     <h1>Routine laboratory trajectories <em>encode</em> the onset of organ-level complications in cancer</h1>
     <p class="hero-sub">
-      A transformer trained on longitudinal laboratory data from 3,868 patients predicts 111 treatment-associated complications up to two years before clinical onset — using only routine blood work already collected in standard oncological care.
+      A transformer trained on longitudinal lab data from 3,905 patients predicts 162 treatment-associated complications up to two years before clinical onset, using only routine blood work already collected in standard oncological care.
     </p>
     <div class="hero-actions">
       <a class="btn btn-disabled" title="Available upon publication">
@@ -579,7 +592,7 @@ body {
   <section class="authors-section">
     <div class="authors-label">Authors</div>
     <div class="authors-list">
-      <span class="highlight">Jannik Lübberstedt</span>, Krischan Braitsch, Jacqueline Lammert, Christof Winter, Florian Gabriel, Tristan Lemke, Christopher Zirn, Markus Graf, Friedrich Puttkammer, Hartmut Häntze, Johannes Moll, Anirudh Narayanan, Andrei Zhukov, Fabian Drexel, Zeineb Ben Chaaben, Sebastian Ziegelmayer, Su Hwan Kim, Florian Bassermann, Jan Kirschke, Marcus Makowski, Christian Wachinger, <span class="highlight">Lisa Adams*</span> &amp; <span class="highlight">Keno Bressem*</span>
+      <span class="highlight">Jannik Lübberstedt</span>, Krischan Braitsch, Jacqueline Lammert, Christof Winter, Florian Gabriel, Tristan Lemke, Christopher Zirn, Markus Graf, Friedrich Puttkammer, Hartmut Häntze, Johannes Moll, Anirudh Narayanan, Andrei Zhukov, Fabian Drexel, Zeineb Ben Chaaben, Sebastian Ziegelmayer, Su Hwan Kim, Marion Högner, Jan Kirschke, Florian Bassermann, Marcus Makowski, Christian Wachinger, <span class="highlight">Lisa Adams*</span> &amp; <span class="highlight">Keno Bressem*</span>
     </div>
     <div class="affiliation">TUM University Hospital, Klinikum rechts der Isar · German Heart Center Munich · Charité Berlin</div>
   </section>
@@ -587,7 +600,7 @@ body {
   <!-- Stats -->
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-value">3,868</div>
+      <div class="stat-value">3,905</div>
       <div class="stat-label">Patients</div>
     </div>
     <div class="stat-card">
@@ -595,7 +608,7 @@ body {
       <div class="stat-label">Lab measurements</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">111</div>
+      <div class="stat-value">162</div>
       <div class="stat-label">Predicted diagnoses</div>
     </div>
     <div class="stat-card">
@@ -608,7 +621,7 @@ body {
   <section class="abstract-section">
     <div class="section-label">Abstract</div>
     <p class="abstract-text">
-      Routine laboratory panels drawn during cancer treatment generate dense temporal records of organ function, yet this signal is discarded by prognostic tools that operate on single-timepoint snapshots. A transformer trained on 2,777,595 laboratory measurements from 3,868 patients with multiple myeloma or ovarian cancer predicted two-year onset of 111 diagnoses spanning eight clinical categories, achieving 1.1- to 3.1-fold enrichment above prevalence at the group level. The temporal advantage over non-sequential baselines scaled with biological tempo, with AUROC gains of up to 0.08 for gradually evolving endpoints, narrowing for conditions with laboratory antecedents captured by single timepoints. Predictions generalised across both cancers for shared toxicity endpoints but diverged for disease-specific complications, and biomarker masking recovered diagnosis-specific signatures consistent with established pathophysiology. Cross-system external validation on an independent United States cohort confirmed transferability of mortality, metastatic disease, and myelodysplastic syndrome predictions, with remaining endpoints limited by structural coding incompatibilities between healthcare systems.
+      Routine laboratory panels drawn during cancer treatment constitute longitudinal physiological recordings of organ function, yet their temporal structure is discarded by single-timepoint prognostic tools. A transformer trained on 2,777,595 laboratory measurements from 3,905 patients with multiple myeloma or ovarian cancer predicted the two-year onset of 162 treatment-associated complications, including therapy-related myelodysplastic syndromes, spanning eight clinical categories, achieving 1.5- to 6.1-fold enrichment above prevalence at the group level. It matched or outperformed non-sequential baselines across grouped endpoints (AUROC gains up to +0.11), demonstrating that longitudinal laboratory trajectories capture evolving complication-specific physiology inaccessible from isolated measurements. Predictions generalised across both cancers, divergence concentrating in disease-specific complications, and biomarker masking recovered signatures consistent with established pathophysiology. External validation on MIMIC-IV and MMRF CoMMpass confirmed transferability across independent healthcare systems (AUROC up to 0.85). Routine oncological laboratory data encode organ deterioration weeks to months before clinical onset, enabling complication-specific surveillance without additional testing infrastructure.
     </p>
   </section>
 
@@ -619,22 +632,22 @@ body {
       <div class="finding-card">
         <div class="finding-icon">↗</div>
         <div class="finding-title">Temporal signal scales with biological tempo</div>
-        <div class="finding-desc">The transformer's advantage over cross-sectional baselines is largest for slowly evolving complications (ΔAUROC +0.08 for MDS, +0.07 for infections, +0.06 for kidney disease) and smallest for acute conditions, demonstrating that trajectory information carries complication-specific signal inaccessible to single-timepoint analysis.</div>
+        <div class="finding-desc">The transformer's advantage over cross-sectional baselines is largest for slowly evolving complications: +0.11 AUROC for MDS, +0.09 for fungal infections, +0.05 for cardiovascular disease. These are exactly the endpoints offering the longest window for preventive intervention.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">⟷</div>
         <div class="finding-title">Biological coherence across cancers</div>
-        <div class="finding-desc">Six of eight grouped endpoints generalised across myeloma and ovarian cancer with AUROC differences ≤0.04. Disease-specific endpoints diverged along mechanistically expected lines: osteolyses confined to myeloma, MDS driven by platinum exposure in ovarian cancer.</div>
+        <div class="finding-desc">Five of eight grouped endpoints generalised across myeloma and ovarian cancer with AUROC differences ≤0.07. Where predictions diverged, they tracked observable biology: peritoneal metastases dominate in ovarian cancer (28% vs 1% prevalence), pulmonary aspergillosis is confined to myeloma.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">◎</div>
         <div class="finding-title">Interpretable biomarker signatures</div>
-        <div class="finding-desc">Feature masking recovers diagnosis-specific patterns aligned with pathophysiology: eGFR for kidney disease, MCH/MCV for MDS, calcium and INR for diabetes, age and INR for infections — without prior biological constraints.</div>
+        <div class="finding-desc">Feature masking recovers diagnosis-specific patterns aligned with pathophysiology, without prior biological constraints. Glucose dominates diabetes, filtration markers (eGFR) dominate kidney disease, red blood cell count dominates MDS, age leads cardiovascular and mortality predictions.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">⬡</div>
         <div class="finding-title">Cross-system external validation</div>
-        <div class="finding-desc">Applied without retraining to 1,626 MIMIC-IV patients. Mortality, metastatic disease, and MDS predictions transferred across healthcare systems. All eight primary endpoints maintained enrichment at or above prevalence despite coding system differences.</div>
+        <div class="finding-desc">Applied without retraining to 1,626 MIMIC-IV and 1,143 MMRF CoMMpass patients. Renal and metabolic endpoints transferred most strongly: individual CKD stages reach AUROC 0.85, with type 2 diabetes matching internal discrimination across both cohorts.</div>
       </div>
       <div class="finding-card">
         <div class="finding-icon">⊕</div>
@@ -654,64 +667,64 @@ body {
           <th>AUROC</th>
           <th>AP</th>
           <th>Enrichment</th>
-          <th>Δ vs. XGBoost</th>
+          <th>Δ vs. best baseline</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="endpoint">Myelodysplastic syndromes</td>
-          <td class="mono">0.73</td>
-          <td class="mono">0.107</td>
-          <td><span class="enrichment-badge enrich-high">3.1×</span></td>
-          <td class="mono">+0.08</td>
+          <td class="mono">0.71</td>
+          <td class="mono">0.081</td>
+          <td><span class="enrichment-badge enrich-high">6.1×</span></td>
+          <td class="mono">+0.11</td>
         </tr>
         <tr>
-          <td class="endpoint">Osteolyses</td>
-          <td class="mono">0.78</td>
-          <td class="mono">0.212</td>
-          <td><span class="enrichment-badge enrich-high">2.5×</span></td>
-          <td class="mono">+0.04</td>
+          <td class="endpoint">Fungal infections</td>
+          <td class="mono">0.75</td>
+          <td class="mono">0.101</td>
+          <td><span class="enrichment-badge enrich-high">3.1×</span></td>
+          <td class="mono">+0.09</td>
         </tr>
         <tr>
           <td class="endpoint">Kidney disease</td>
-          <td class="mono">0.68</td>
-          <td class="mono">0.301</td>
-          <td><span class="enrichment-badge enrich-med">1.9×</span></td>
-          <td class="mono">+0.06</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Type 2 diabetes</td>
-          <td class="mono">0.62</td>
-          <td class="mono">0.077</td>
-          <td><span class="enrichment-badge enrich-med">1.5×</span></td>
-          <td class="mono">+0.06</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Death</td>
-          <td class="mono">0.66</td>
-          <td class="mono">0.286</td>
-          <td><span class="enrichment-badge enrich-med">1.5×</span></td>
-          <td class="mono">+0.02</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Bacterial infections</td>
-          <td class="mono">0.60</td>
-          <td class="mono">0.305</td>
-          <td><span class="enrichment-badge enrich-med">1.4×</span></td>
-          <td class="mono">+0.07</td>
-        </tr>
-        <tr>
-          <td class="endpoint">Metastatic disease</td>
-          <td class="mono">0.60</td>
-          <td class="mono">0.264</td>
-          <td><span class="enrichment-badge enrich-med">1.3×</span></td>
+          <td class="mono">0.74</td>
+          <td class="mono">0.372</td>
+          <td><span class="enrichment-badge enrich-high">2.5×</span></td>
           <td class="mono">0.00</td>
         </tr>
         <tr>
+          <td class="endpoint">Metastatic disease</td>
+          <td class="mono">0.73</td>
+          <td class="mono">0.483</td>
+          <td><span class="enrichment-badge enrich-med">2.1×</span></td>
+          <td class="mono">0.00</td>
+        </tr>
+        <tr>
+          <td class="endpoint">All-cause mortality</td>
+          <td class="mono">0.70</td>
+          <td class="mono">0.213</td>
+          <td><span class="enrichment-badge enrich-med">1.8×</span></td>
+          <td class="mono">+0.04</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Type 2 diabetes</td>
+          <td class="mono">0.65</td>
+          <td class="mono">0.074</td>
+          <td><span class="enrichment-badge enrich-med">1.8×</span></td>
+          <td class="mono">+0.04</td>
+        </tr>
+        <tr>
           <td class="endpoint">Cardiovascular diseases</td>
-          <td class="mono">0.56</td>
-          <td class="mono">0.329</td>
-          <td><span class="enrichment-badge enrich-low">1.1×</span></td>
+          <td class="mono">0.68</td>
+          <td class="mono">0.480</td>
+          <td><span class="enrichment-badge enrich-med">1.6×</span></td>
+          <td class="mono">+0.05</td>
+        </tr>
+        <tr>
+          <td class="endpoint">Bacterial infections</td>
+          <td class="mono">0.66</td>
+          <td class="mono">0.403</td>
+          <td><span class="enrichment-badge enrich-med">1.5×</span></td>
           <td class="mono">+0.01</td>
         </tr>
       </tbody>
@@ -720,24 +733,38 @@ body {
 
   <!-- External Validation -->
   <section class="validation-section">
-    <div class="section-label">External Validation · MIMIC-IV (1,626 patients)</div>
+    <div class="section-label">External Validation · MIMIC-IV &amp; MMRF CoMMpass</div>
     <div class="validation-grid">
       <div class="val-card">
-        <div class="val-endpoint">Metastatic</div>
+        <div class="val-endpoint">Kidney disease</div>
+        <div class="val-auroc">0.69 / 0.67</div>
+        <div class="val-enrich">MIMIC / MMRF · internal 0.74</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">Type 2 diabetes</div>
+        <div class="val-auroc">0.65 / 0.68</div>
+        <div class="val-enrich">MIMIC / MMRF · internal 0.65</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">CKD stage 3–5</div>
+        <div class="val-auroc">0.83–0.85</div>
+        <div class="val-enrich">MIMIC · individual endpoints</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">All-cause mortality</div>
+        <div class="val-auroc">0.64 / 0.69</div>
+        <div class="val-enrich">MIMIC / MMRF · internal 0.70</div>
+      </div>
+      <div class="val-card">
+        <div class="val-endpoint">Metastatic disease</div>
         <div class="val-auroc">0.67</div>
-        <div class="val-enrich">1.6× enrichment</div>
+        <div class="val-enrich">MIMIC · internal 0.73</div>
       </div>
       <div class="val-card">
-        <div class="val-endpoint">Death</div>
-        <div class="val-auroc">0.62</div>
-        <div class="val-enrich">1.3× enrichment</div>
+        <div class="val-endpoint">Myelodysplastic syndrome</div>
+        <div class="val-auroc">0.66</div>
+        <div class="val-enrich">MIMIC · internal 0.71 · 2.6× enrichment</div>
       </div>
-      <div class="val-card">
-        <div class="val-endpoint">MDS</div>
-        <div class="val-auroc">0.61</div>
-        <div class="val-enrich">1.9× enrichment</div>
-      </div>
-
     </div>
   </section>
 
@@ -766,7 +793,7 @@ body {
       <div class="arch-step">
         <div class="arch-step-num">04</div>
         <div class="arch-step-title">Prediction</div>
-        <div class="arch-step-desc">Multi-label sigmoid head predicts 111 diagnoses within 2 years</div>
+        <div class="arch-step-desc">Multi-label sigmoid head predicts 162 diagnoses within 2 years</div>
       </div>
     </div>
   </section>
@@ -788,8 +815,9 @@ body {
              and Zhukov, Andrei and Drexel, Fabian
              and Ben Chaaben, Zeineb
              and Ziegelmayer, Sebastian and Kim, Su Hwan
-             and Bassermann, Florian and Kirschke, Jan
-             and Makowski, Marcus and Wachinger, Christian
+             and H{\"o}gner, Marion and Kirschke, Jan
+             and Bassermann, Florian and Makowski, Marcus
+             and Wachinger, Christian
              and Adams, Lisa and Bressem, Keno},
   journal = {Manuscript submitted},
   year    = {2026}
